@@ -127,9 +127,17 @@
           Favorite club
           
         </p>
-        <router-link to="/Chelsea" class="router-link ">
+        <router-link to="/Chelsea" class="router-link  ">
             <span>Chelsea</span>
-            <i class="fa-solid fa-star ml-auto text-[#5742a9]"></i>
+            <i class="fa-solid fa-star ml-auto text-[#5742a9]   "></i>
+          </router-link>
+          <router-link to="/Chelsea" class="router-link  ">
+            <span>Manchester City</span>
+            <i class="fa-solid fa-star ml-auto text-[#5742a9]   "></i>
+          </router-link>
+          <router-link to="/Chelsea" class="router-link  ">
+            <span>Bayern Munchen</span>
+            <i class="fa-solid fa-star ml-auto text-[#5742a9]   "></i>
           </router-link>
       </div>
     </div>
