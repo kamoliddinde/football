@@ -51,45 +51,95 @@
           </i>
         </RouterLink>
         <RouterLink
-          to="/"
+          to="/live-football"
           class="router-link"
+          active-class="router-link-active"
         >
-          <i class="fa-solid fa-video">
-            <span> Live Football </span>
-          </i>
+          <i class="fa-solid fa-video"> </i>
+
+          <span> Live Football </span>
         </RouterLink>
         <RouterLink
-          to="/"
+          to="/standings"
           class="router-link"
+          active-class="router-link-active"
         >
           <i class="fa-solid fa-arrow-up-short-wide"></i>
           <span>Standings</span>
         </RouterLink>
         <RouterLink
-          to="/"
+          to="/highlights"
           class="router-link"
+          active-class="router-link-active"
         >
           <i class="fa-solid fa-highlighter"></i>
-          <span>Highligh</span>
+          <span>Highlights</span>
         </RouterLink>
         <RouterLink
-          to="/"
+          to="/shop"
           class="router-link"
+          active-class="router-link-active"
         >
-        <i class="fa-solid fa-store"></i>
+          <i class="fa-solid fa-store"></i>
           <span>Shop</span>
         </RouterLink>
         <RouterLink
-          to="/"
+          to="/news"
           class="router-link"
+          active-class="router-link-active"
         >
-        <i class="fa-regular fa-newspaper"></i>
+          <i class="fa-regular fa-newspaper"></i>
           <span>News</span>
         </RouterLink>
+      </div>
+      <div>
+        <el-collapse v-model="collapseVal">
+          <el-collapse-item name="1" title="Football League">
+            <router-link to="/world-cup" class="router-link">
+              <i class="fa-solid fa-soccer-ball"></i>
+              <span>Worldcup Qatar 2022</span>
+            </router-link>
+            <router-link to="/world-cup " class="router-link">
+              <i class="fa-solid fa-soccer-ball" ></i>
+              <span>Champions League</span>
+            </router-link class="router-link">
+            <router-link to="/world-cup" class="router-link">
+              <i class="fa-solid fa-soccer-ball"></i>
+              <span
+                >Premier League
+              </span
+              >
+            </router-link>
+            <router-link to="/world-cup" class="router-link">
+                  <i class="fa-solid fa-soccer-ball"></i>
+                  <span>La Liga</span>
+                </router-link>
+            <router-link to="/world-cup" class="router-link">
+              <i class="fa-solid fa-soccer-ball"></i>
+              <span>Ligue 1</span>
+            </router-link>
+          </el-collapse-item>
+        </el-collapse>
+
+      </div>
+      <div class="">
+        <p class="text-[gray] uppercase">
+          Favorite club
+          
+        </p>
+        <router-link to="/Chelsea" class="router-link ">
+            <span>Chelsea</span>
+            <i class="fa-solid fa-star ml-auto text-[#5742a9]"></i>
+          </router-link>
       </div>
     </div>
   </aside>
 </template>
+<script setup>
+import { ref} from "vue";
+
+const collapseVal = ref(["1"]); 
+</script>
 <style>
 aside {
   display: flex;
@@ -105,7 +155,7 @@ aside {
     button {
       width: 100%;
       text-align: center;
-      padding-top: 12px 0;
+      padding: 12px 0;
       color: gray;
       font-size: 24px;
       cursor: pointer;
@@ -133,6 +183,20 @@ aside {
     }
     .router-link-active {
       color: #5742a9;
+    }
+    .el-collapse-item__header {
+      background-color: transparent;
+      border: none;
+      font-size: 16px;
+      color: gray;
+      text-transform: uppercase;
+    }
+    .el-collapse {
+      border: none;
+    }
+    .el-collapse-item__wrap {
+      background-color: transparent;
+      border: none;
     }
   }
 }
