@@ -95,58 +95,53 @@
       <div>
         <el-collapse v-model="collapseVal">
           <el-collapse-item name="1" title="Football League">
-            <router-link to="/world-cup" class="router-link">
-              <i class="fa-solid fa-soccer-ball"></i>
-              <span>Worldcup Qatar 2022</span>
-            </router-link>
-            <router-link to="/world-cup " class="router-link">
-              <i class="fa-solid fa-soccer-ball" ></i>
-              <span>Champions League</span>
-            </router-link class="router-link">
-            <router-link to="/world-cup" class="router-link">
-              <i class="fa-solid fa-soccer-ball"></i>
-              <span
-                >Premier League
-              </span
+            <div class="max-h-[300px] overflow-y-auto">
+              <router-link
+                v-for="league in leagues"
+                :key="league.id"
+                to="/world-cup"
+                class="router-link"
               >
-            </router-link>
-            <router-link to="/world-cup" class="router-link">
-                  <i class="fa-solid fa-soccer-ball"></i>
-                  <span>La Liga</span>
-                </router-link>
-            <router-link to="/world-cup" class="router-link">
-              <i class="fa-solid fa-soccer-ball"></i>
-              <span>Ligue 1</span>
-            </router-link>
+                <img class="w-6 h-6 object-contain" :src="league.logo" alt="" />
+                <span class="whitespace-nowrap overflow-hidden    ">{{ league.name }}</span>
+              </router-link>
+            </div>
           </el-collapse-item>
         </el-collapse>
-
       </div>
       <div class="">
-        <p class="text-[gray] uppercase">
-          Favorite club
-          
-        </p>
-        <router-link to="/Chelsea" class="router-link  ">
-            <span>Chelsea</span>
-            <i class="fa-solid fa-star ml-auto text-[#5742a9]   "></i>
-          </router-link>
-          <router-link to="/Chelsea" class="router-link  ">
-            <span>Manchester City</span>
-            <i class="fa-solid fa-star ml-auto text-[#5742a9]   "></i>
-          </router-link>
-          <router-link to="/Chelsea" class="router-link  ">
-            <span>Bayern Munchen</span>
-            <i class="fa-solid fa-star ml-auto text-[#5742a9]   "></i>
-          </router-link>
+        <p class="text-[gray] uppercase">Favorite club</p>
+        <router-link to="/Chelsea" class="router-link">
+          <span>Chelsea</span>
+          <i class="fa-solid fa-star ml-auto text-[#5742a9] text-[24px]"></i>
+        </router-link>
+        <router-link to="/Chelsea" class="router-link">
+          <span>Manchester City</span>
+          <i class="fa-solid fa-star ml-auto text-[#5742a9] text-[24px]"></i>
+        </router-link>
+        <router-link to="/Chelsea" class="router-link">
+          <span>Bayern Munchen</span>
+          <i class="fa-solid fa-star ml-auto text-[#5742a9] text-[24px]"></i>
+        </router-link>
       </div>
     </div>
   </aside>
 </template>
 <script setup>
-import { ref} from "vue";
+import { ref, onMounted } from "vue";
+import api from "@/api";
+const collapseVal = ref(["1"]);
 
-const collapseVal = ref(["1"]); 
+const leagues = ref([]);
+async function getLeagues() {
+  leagues.value = await api.get("/football-get-all-leagues").then((res) => {
+    return res.data.response.leagues;
+  });
+}
+
+onMounted(() => {
+  getLeagues();
+});
 </script>
 <style>
 aside {

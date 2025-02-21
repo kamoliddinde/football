@@ -5,7 +5,7 @@ import TheSidebar from '@/components/TheSidebar.vue';
 </script>
 
 <template>
-  <div class="flex items-start">
+  <div class="flex items-start h-screen overflow-hidden">
     <TheSidebar/>
       <div class="flex-1">
         <TheTopBar/>

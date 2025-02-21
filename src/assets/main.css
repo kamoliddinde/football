@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./base.css";
 @font-face{
     font-family:" Inter";
     src: url("./Inter_28pt-Medium.ttf");
@@ -9,3 +10,34 @@
 body{
     background-color: #f6f6f4;
 }
+main{
+    height: calc(100vh - 68px);
+    padding: 24px;
+    overflow-y: auto;
+}
+/* Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #d3d3d3;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
+  
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #d3d3d3 #f1f1f1;
+  }
+
