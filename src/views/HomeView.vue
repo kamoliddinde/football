@@ -20,79 +20,26 @@
         </div>
       </div>
     </div>
-    
+
     <h2 class="text-xl font-bold mb-4">⚽ Football Match</h2>
-        <div class="border-b flex space-x-4 pb-2 mb-4">
-            <button class="text-purple-600 font-semibold border-b-2 border-purple-600 pb-1">Latest Match</button>
-            <button class="text-gray-500">Coming Match</button>
-            <button class="text-gray-500">Pre-season</button>
-            <button class="text-gray-500">Live Games</button>
-            <button class="text-gray-500">Fun Football</button>
-        </div>
-    <div class="">
-            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                <div class="flex items-center space-x-2">
-                    <span>🇦🇷</span>
-                    <span>Argentina</span>
-                    <span class="bg-purple-200 text-purple-700 px-2 py-1 rounded">1 - 2</span>
-                    <span>🇮🇹</span>
-                    <span>Italy</span>
-                </div>
-                <span class="bg-red-200 text-red-700 px-3 py-1 rounded">Full - Time</span>
-                <span class="text-gray-500">18 December 2022</span>
-            </div>
-            
-            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                <div class="flex items-center space-x-2">
-                    <span>🇵🇹</span>
-                    <span>Portugal</span>
-                    <span class="bg-purple-200 text-purple-700 px-2 py-1 rounded">2 - 3</span>
-                    <span>🇩🇪</span>
-                    <span>Belgium</span>
-                </div>
-                <span class="bg-red-200 text-red-700 px-3 py-1 rounded">Full - Time</span>
-                <span class="text-gray-500">18 December 2022</span>
-            </div>
-            
-            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                <div class="flex items-center space-x-2">
-                    <span>🇬🇭</span>
-                    <span>Ghana</span>
-                    <span class="bg-purple-200 text-purple-700 px-2 py-1 rounded">1 - 3</span>
-                    <span>🇧🇷</span>
-                    <span>Brazil</span>
-                </div>
-                <span class="bg-red-200 text-red-700 px-3 py-1 rounded">Full - Time</span>
-                <span class="text-gray-500">17 December 2022</span>
-            </div>
-            
-            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                <div class="flex items-center space-x-2">
-                    <span>🇺🇾</span>
-                    <span>Uruguay</span>
-                    <span class="bg-purple-200 text-purple-700 px-2 py-1 rounded">2 - 2</span>
-                    <span>🇵🇱</span>
-                    <span>Poland</span>
-                </div>
-                <span class="bg-red-200 text-red-700 px-3 py-1 rounded">Full - Time</span>
-                <span class="text-gray-500">17 December 2022</span>
-            </div>
-            
-            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                <div class="flex items-center space-x-2">
-                    <span>🇪🇸</span>
-                    <span>Spain</span>
-                    <span class="bg-purple-200 text-purple-700 px-2 py-1 rounded">3 - 3</span>
-                    <span>🇨🇿</span>
-                    <span>Czech</span>
-                </div>
-                <span class="bg-red-200 text-red-700 px-3 py-1 rounded">Full - Time</span>
-                <span class="text-gray-500">16 December 2022</span>
-            </div>
-        </div>
+    <section>
+      <el-tabs v-model="tabVal">
+        <el-tab-pane label="Latest Match" name="latest"><LatestMatch/> </el-tab-pane>
+        <el-tab-pane label="Coming Match" name="coming"> </el-tab-pane>
+        <el-tab-pane label="Pre-season" name="pre-season"> </el-tab-pane>
+        <el-tab-pane label="Live Games" name="live-games"> </el-tab-pane>
+        <el-tab-pane label="Fun Football" name="fun-football"> </el-tab-pane>
+      </el-tabs>
+    </section>
+    
+    
   </main>
 </template>
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import LatestMatch from "@/components/LatestMatch.vue";
+const tabVal = ref("latest");
+</script>
 <style>
 .left-main {
   background-image: url("@/assets/img/bg-img.png");
@@ -121,6 +68,6 @@
   margin-bottom: 15px;
 }
 .router-link {
-    color: black;
+  color: black;
 }
 </style>
