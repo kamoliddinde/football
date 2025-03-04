@@ -9,7 +9,7 @@
           </div>
         </td>
         <td>
-          <el-tag round> 1-1 </el-tag>
+          <el-tag round> 1-11 </el-tag>
         </td>
         <td>
           <div class="flex item-cunter space-x-2 justify-center">
