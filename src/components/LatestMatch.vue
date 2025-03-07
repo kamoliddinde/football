@@ -1,27 +1,28 @@
 <template>
-  <table class="w-full latest-match-table">{{ matches + "" }}
+  <table class="w-full latest-match-table">
+    
     <tbody>
       <tr v-for="match in matches" :key="match.id">
         <td>
           <div class="flex item-cunter space-x-2 justify-center">
-            <span>🇦🇷</span>
-            <span>Argentina</span>
+            <img class="w-5 h-5" :src="match.strHomeTeamBadge" alt="">
+            <span>{{ match.strHomeTeam }}</span>
           </div>
         </td>
         <td>
-          <el-tag round> 1-11 </el-tag>
+          <el-tag round> {{ match.intHomeScore }}-{{ match.intAwayScore }} </el-tag>
         </td>
         <td>
           <div class="flex item-cunter space-x-2 justify-center">
-            <span>🇮🇹</span>
-            <span>Italy</span>
+            <img class="w-5 h-5" :src="match.strAwayTeamBadge" alt="">
+            <span>{{ match.strAwayTeam }}</span>
           </div>
         </td>
         <td>
           <el-tag type="danger"> Full-Time </el-tag>
         </td>
         <td>
-          <span class="text-gray-500">18 December 2022</span>
+          <span class="text-gray-500">{{ match.dateEvent }}</span>
         </td>
         <td>
           <div class="flex items-center gap-2 justify-center">
@@ -37,24 +38,18 @@
 import { WarningFilled, TrendCharts } from "@element-plus/icons-vue";
 import { ref, onMounted } from "vue";
 import api from "@/api";
+
+const emit = defineEmits(["latestMatch"])
 const matches = ref([]);
-async function getMatches(){
-    const year = new Date().getFullYear();
-    let month = new Date().getMonth() + 1; 
-    let day = new Date().getDate();
-    let today = `${year}${month}${day}`;
-    if(month < 10 ){
-        month = `0${month}`;
-    }
-    if(day < 10){
-        day = `0${day}`;
-    }
-   matches.value = await api.get("/football-get-matches-by-date",{
-    params:{
-        date:today
-    }
-   }).then((res) => res.data.response?.matches); 
-    
+async function getMatches() {
+  matches.value = await api
+    .get("/eventspastleague.php", {
+      params: {
+        id: 4328,
+      },
+    })
+    .then((res) => res.data.events);
+    emit("latestMatch", matches.value[0]);
 }
 onMounted(() => {
   getMatches();

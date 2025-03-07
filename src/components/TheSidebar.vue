@@ -98,12 +98,12 @@
             <div class="max-h-[300px] overflow-y-auto">
               <router-link
                 v-for="league in leagues"
-                :key="league.id"
-                to="/world-cup"
+                :key="league.idLeague"
+                :to="`/league/${league.strLeague}`"
                 class="router-link"
               >
-                <img class="w-6 h-6 object-contain" :src="league.logo" alt="" />
-                <span class="whitespace-nowrap overflow-hidden    ">{{ league.name }}</span>
+               
+                <span class="whitespace-nowrap overflow-hidden    ">{{ league.strLeague }}</span>
               </router-link>
             </div>
           </el-collapse-item>
@@ -134,8 +134,8 @@ const collapseVal = ref(["1"]);
 
 const leagues = ref([]);
 async function getLeagues() {
-  leagues.value = await api.get("/football-get-all-leagues").then((res) => {
-    return res.data.response.leagues;
+  leagues.value = await api.get("/all_leagues.php").then((res) => {
+    return res.data.leagues;
   });
 }
 
